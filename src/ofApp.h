@@ -35,14 +35,28 @@ class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
-		void draw();
+        void update();
 
     std::string hueBridgeIP;
     std::string hueUser;
+    std::string hueGetObject;
     std::string hueLightNum;
     std::string hueGroupNum;
+    bool hueCTcold;
+    
+    std::string getUrl;
+    std::string putUrlGroup;
+    std::string putUrlSingle;
 
     ofx::HTTP::DefaultClient client;
     ofx::HTTP::Context context;
-
+    ofx::HTTP::BaseResponse response;
+    
+    ofBuffer bodyBuffer;
+    Json::Value messageBody;
+    
+    ofxSimpleTimer timer1;
+    void timer1CompleteHandler( int &args );
+    void timer1StartedHandler( int &args );
+    
 };
