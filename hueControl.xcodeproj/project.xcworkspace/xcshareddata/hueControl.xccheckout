@@ -34,23 +34,23 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3CF3B4471C84DF2543AAA0AEAE2EC9F5FB1BB5AC</key>
-		<string>../../../../../addons/ofxJSONRPC</string>
+		<string>../../../addons/ofxJSONRPC</string>
 		<key>4401B78D6A43C47BEBBD941DAE88FAC3E6BE9980</key>
-		<string>../../../../../addons/ofxNetworkUtils</string>
+		<string>../../../addons/ofxNetworkUtils</string>
 		<key>5DB7C332A3A89035E93556A2A38BF414005BA671</key>
-		<string>../../../../../addons/ofxJSON</string>
+		<string>../../../addons/ofxJSON</string>
 		<key>60D5B951A15839397B246BA23923EE53F79F363B</key>
 		<string>../..</string>
 		<key>6D6FDB373C9A9EB614FB047E30EC71CD5377F13C</key>
-		<string>../../../../../addons/ofxSSLManager</string>
+		<string>../../../addons/ofxSSLManager</string>
 		<key>6DBA07F83F7AF99DB5F116332E6446603283BF4C</key>
-		<string>../../../../../addons/ofxHTTP</string>
+		<string>../../../addons/ofxHTTP</string>
 		<key>CA29DB320F881B85D76220FC5498A4D1FA4F037C</key>
-		<string>../../../../../addons/ofxIO</string>
+		<string>../../../addons/ofxIO</string>
 		<key>CC64F4963C935629E4EEDB8221C0DA9B68D2313F</key>
-		<string>../../../../../addons/ofxMediaType</string>
+		<string>../../../addons/ofxMediaType</string>
 		<key>CE427DFEAC7CF46E0343E32288BC15C14F0689BB</key>
-		<string>../../../../../addons/ofxTaskQueue</string>
+		<string>../../../addons/ofxTaskQueue</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/twobeers83/hueControl.git</string>

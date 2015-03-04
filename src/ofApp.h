@@ -43,6 +43,13 @@ class ofApp : public ofBaseApp{
     std::string hueLightNum;
     std::string hueGroupNum;
     bool hueCTcold;
+    int ctCold;
+    int ctWarm;
+    int transitionTime;
+    int offsetTime;
+    
+    int counter;
+    int timer1Interval;
     
     std::string getUrl;
     std::string putUrlGroup;
@@ -53,10 +60,14 @@ class ofApp : public ofBaseApp{
     ofx::HTTP::BaseResponse response;
     
     ofBuffer bodyBuffer;
-    Json::Value messageBody;
+    
     
     ofxSimpleTimer timer1;
     void timer1CompleteHandler( int &args );
     void timer1StartedHandler( int &args );
+    
+    ofxSimpleTimer timer2;
+    void timer2CompleteHandler( int &args );
+    void timer2StartedHandler( int &args );
     
 };
