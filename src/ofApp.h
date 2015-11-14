@@ -51,6 +51,10 @@ class ofApp : public ofBaseApp{
     int counter;
     int timer1Interval;
     
+    std::string hueChangingParameter;
+    int hueChangingParameter1;
+    int hueChangingParameter2;
+    
     std::string getUrl;
     std::string putUrlGroup;
     std::string putUrlSingle;

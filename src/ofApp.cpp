@@ -39,8 +39,12 @@ void ofApp::setup(){
     
     ctCold = 200; // 153-500
     ctWarm = 450; // 153-500
-    transitionTime = 1*600; // 10 = 1sec, 600 = 1min
-    offsetTime = 5*1000;
+    transitionTime = 5*600; // 10 = 1sec, 600 = 1min
+    offsetTime = 0*1000;
+    
+    hueChangingParameter = "ct"; // on(true/false), bri(1-254), hue(0-65535), sat(0-254), xy(0-1), ct(153-500), alert(none,select,lselect), effect(none, colorloop)
+    hueChangingParameter1 = 153;
+    hueChangingParameter2 = 500; //0-60000// hue from 0 to 10000 (yellow to red)
     
     // HTTP Setup
     getUrl       = "http://" + hueBridgeIP + "/api/" + hueUser + "/" + hueGetObject;
@@ -100,11 +104,14 @@ void ofApp::setup(){
     messageBody["on"]             = true;
     messageBody["bri"]            = 254;     // 1-254 (254 brightest)
     messageBody["hue"]            = 0;       // 0-65535 (red to red)
-    messageBody["sat"]            = 0;     // 0-254 (0 = white)
+    messageBody["sat"]            = 254;     // 0-254 (0 = white)
     messageBody["alert"]          = "none";  // none, select, lselect
     messageBody["effect"]         = "none";  // "colorloop" or none
     messageBody["transitiontime"] = 0;      // 10 = 1sec;
     messageBody["ct"]             = ctCold;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
+    
+    messageBody["transitiontime"]      = transitionTime;      // 10 = 1sec;
+    messageBody[hueChangingParameter]  = hueChangingParameter1;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
     
     bodyBuffer = messageBody.toStyledString();
     
@@ -167,11 +174,11 @@ void ofApp::timer1CompleteHandler( int &args )
     if (hueCTcold) {
         // Setting lights to warm light
         messageBody["transitiontime"] = transitionTime;      // 10 = 1sec;
-        messageBody["bri"]             = 50;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
+        messageBody[hueChangingParameter]             = hueChangingParameter2;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
         
         /////
         
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 10; i++) {
             
             hueLightNum = ofToString(i,0);
             putUrlSingle = "http://" + hueBridgeIP + "/api/" + hueUser + "/lights/" + hueLightNum + "/state";
@@ -221,9 +228,9 @@ void ofApp::timer1CompleteHandler( int &args )
     } else {
         // Setting lights to cold light
         messageBody["transitiontime"] = transitionTime;      // 10 = 1sec;
-        messageBody["bri"]             = 254;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
+        messageBody[hueChangingParameter]             = hueChangingParameter1;     // 153 (6500K/daylight) - 500 (2000K/candlelight)
         
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 10; i++) {
             
             hueLightNum = ofToString(i,0);
             putUrlSingle = "http://" + hueBridgeIP + "/api/" + hueUser + "/lights/" + hueLightNum + "/state";
@@ -280,9 +287,9 @@ void ofApp::timer1StartedHandler( int &args ) {
 
 void ofApp::timer2CompleteHandler( int &args )
 {
-    std::cout << "Runtime " << counter%(timer1Interval/1000/60) << " mins; Loop " << timer1Interval/1000/60 << "mins; Offset: " << offsetTime/1000 << " secs" << endl;
-    counter++;
-    timer2.start(true);
+//    std::cout << "Runtime " << counter%(timer1Interval/1000/60) << " mins; Loop " << timer1Interval/1000/60 << "mins; Offset: " << offsetTime/1000 << " secs" << endl;
+//    counter++;
+//    timer2.start(true);
     
 }
 
